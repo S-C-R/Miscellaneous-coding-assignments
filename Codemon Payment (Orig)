@@ -1,0 +1,126 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+	float TaxRate = -1, EndPrice, Translation;
+	int RegionNum, Insurance, BallCount, BallPrice, BallChoice, BoujeeBall, BudgetBall;
+	char Goodbye;
+while (Goodbye != 'n'){
+	BallPrice = 0;
+	BoujeeBall = 0;
+	BudgetBall = 0;
+	do {
+		cout << "Please input region: 1-Konta, 2-Jahta, 3-Hainn, 4-Sennah, 5-Ynavo, 6-Kolas, 7-Olalo, 8-Golor, 9-Quit" << endl;
+		cin >> RegionNum;
+		switch(RegionNum){
+			case 1:
+				cout << "Konta selected, Tax rate: 100%" << endl;
+				TaxRate = 1.00;
+				break;
+			case 2:
+				cout << "Jahta selected, Tax rate: 80%" << endl;
+				TaxRate = 0.80;
+				break;
+			case 3:
+				cout << "Hainn selected, Tax rate: 95%" << endl;
+				TaxRate = 0.95;
+				break;
+			case 4:
+				cout << "Sennah selected, Tax rate: 115%" << endl;
+				TaxRate = 1.15;
+				break;
+			case 5:
+				cout << "Ynavo selected, Tax rate: 150%" << endl;
+				TaxRate = 1.50;
+				break;
+			case 6:
+				cout << "Kolas selected, Tax rate: 112%" << endl;
+				TaxRate = 1.12;
+				break;
+			case 7:
+				cout << "Olalo selected, Tax rate: 75%" << endl;
+				TaxRate = 0.75;
+				break;
+			case 8:
+				cout << "Golor selected, Tax rate: 250%" << endl;
+				TaxRate = 2.50;
+				break;
+			case 9:
+				cout << "Smell ya later!" << endl;
+				return 0;
+			default:
+				cin >> RegionNum;
+				cout << "Nope, its gotta be a number 1-9, try again." << endl;
+				break;
+			}
+	} while(TaxRate == -1);
+	cout << "Input insurance detail" << endl;
+	cin >> Insurance;
+	while ((Insurance < 0) || (Insurance > 100)){
+		cout << "Nice try, Scumbag. Show me your real insurance, between 0-100" << endl;
+		cin >> Insurance;
+		}
+	cout << "Input ball count" << endl;
+	cin >> BallCount;
+	while ((BallCount < 0) || (BallCount > 6)){
+		cout << "I'm pretty sure it's impossible to have more than six balls, or less than zero, or an amount of balls that isn't a positive integer. You should probably make your balls more possible." << endl;
+		cin >> BallCount;
+		}
+	while (BallCount != 0){
+		cout << "What kind of ball do you have there? 1-Codéball 2-Good Ball 3-Extreme Ball 4-Budget Ball 5-Boujee Ball" << endl;
+		cin >> BallChoice;
+		switch(BallChoice){
+			case 1:
+				cout << "Codéball selected, $90" << endl;
+				BallPrice += 90;
+				break;
+			case 2:
+				cout << "Good Ball selected, $115" << endl;
+				BallPrice += 115;
+				break;
+			case 3:
+				cout << "Extreme Ball selected, $130" << endl;
+				BallPrice += 130;
+				break;
+			case 4:
+				cout << "Budget Ball selected, $50" << endl;
+				BallPrice += 50;
+				BudgetBall += 1;
+				break;
+			case 5:
+				cout << "Boujee Ball selected, $350" << endl;
+				BallPrice += 350;
+				BoujeeBall += 1;
+				break;
+			default:
+				cout << "Nope, its gotta be a number 1-5, try again." << endl;
+				break;
+			}
+		BallCount = BallCount - 1;
+		}
+	if (((BudgetBall > 0) && (BoujeeBall > 0)) && ((TaxRate == 1.00 || TaxRate == 0.80) || (TaxRate == 1.50 || TaxRate == 0.75))){
+		cout << "You have both the cheapo ball and the boingo ball! Go to jail, do not pass go, do not collect $200!" << endl;
+		}
+	else {
+		EndPrice = BallPrice / Insurance;
+		Translation = ((EndPrice * (11 / 17)) + 3.62);
+		cout << "Okay, I'll take your CODéMON for a few seconds." << endl;
+		cout << "..." << endl;
+		cout << "..." << endl;
+		cout << "..." << endl;
+		cout << "!!!" << endl;
+		cout << "Here are your CODéMON! That'll be &";
+		cout << Translation;
+		cout << "! Please come again!" << endl;
+		cout << " " << endl;
+	cout << "That's that! Are there more customers that need extorting? (y/n):" << endl;
+	cin >> Goodbye;
+	while ((Goodbye != 'y') && (Goodbye != 'n')){
+			cout << "Hey! That's not how you tell people goodbye! y/n only!" << endl;
+			cin >> Goodbye;
+			}
+		}
+	}
+cout << "Shutting down program... Goodbye!" << endl;
+return 0;
+}
